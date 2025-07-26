@@ -3,9 +3,8 @@ Ecwid.OnAPILoaded.add(function () {
 
     Ecwid.OnPageLoaded.add(function (page) {
         console.log(JSON.stringify(page));
-    });
-
-    Ecwid.OnCartChanged.add(function (cart) {
-        console.log(JSON.stringify(cart));
+        Ecwid.OnCartChanged.add(function (cart) {
+            console.log(JSON.stringify(cart));
+        });
     });
 });
