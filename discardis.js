@@ -1,3 +1,3 @@
-Ecwid.OnCartChanged.add(function(cart){
-    console.log(JSON.stringify(cart));
+Ecwid.Cart.calculateTotal(function (order) {
+    console.log(JSON.stringify(order));
 });
