@@ -1,4 +1,5 @@
-(function checkEcwidAPI() {
+Ecwid.OnAPILoaded.add(function () {
+    // (function checkEcwidAPI() {
     const checks = [
         { name: "Ecwid", test: () => typeof Ecwid !== "undefined" },
         { name: "Ecwid.navigateTo", test: () => typeof Ecwid?.navigateTo === "function" },
@@ -18,4 +19,4 @@
             console.log(`❌ ${name}: Error during check`);
         }
     });
-})();
+});
