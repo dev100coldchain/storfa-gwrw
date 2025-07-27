@@ -1,1 +1,1 @@
-console.log("Ecwid: ", Ecwid);
+// JS API code to follow
