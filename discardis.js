@@ -1,3 +1,7 @@
 Ecwid.OnAPILoaded.add(function() {
-	console.log("storfa-gwrw JS API is loaded.");
+  if (typeof Ecwid.OnCartChanged?.add === "function") {
+    Ecwid.OnCartChanged.add(function(cart) {
+      console.log("Cart changed:", cart);
+    });
+  }
 });
