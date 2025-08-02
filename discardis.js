@@ -11,7 +11,7 @@
       }
       Ecwid.OnPageLoaded.add(function (page) {
         if (page.type === "CART") {
-          const cartContainer = document.querySelector('.ec-cart');
+          const cartContainer = document.querySelector('.ec-cart__sidebar');
           if (cartContainer) {
             const customElement = document.createElement('div');
             customElement.innerHTML = '<p>Bonne fin de journée</p>';
