@@ -15,10 +15,16 @@
           const cartContainer = document.getElementsByClassName('ec-cart__buy-and-save')[0];
           if (cartContainer) {
             console.log("'ec-cart__sidebar-inner' exists.");
-            const customElement = document.createElement('div');
-            // customElement.innerHTML = '<p>Bonne fin de journée !</p>';
-            customElement.innerHTML = '<p><span style="background-color: #EEE8AA;">Remise 5% sur la prochaine commande avec un paiement sur réception de la facture</span></p>';
-            cartContainer.appendChild(customElement);
+            Ecwid.Cart.calculateTotal(function (order) {
+              console.log(JSON.stringify(order));
+              const customElement = document.createElement('div');
+              // customElement.innerHTML = '<p>Bonne fin de journée !</p>';
+              // customElement.innerHTML = '<p><span style="background-color: #EEE8AA;">Remise 5% sur la prochaine commande avec paiement à réception de la facture</span></p>';
+              const highlightColor = '#EEE8AA'; // Pale Goldenrod
+              const cartTotal = (order.total * 0.05).toFixed(2); // Calculate 5% of the total
+              customElement.innerHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${cartTotal} €</span></p>`;
+              cartContainer.appendChild(customElement);
+            });
           }
         }
       });
