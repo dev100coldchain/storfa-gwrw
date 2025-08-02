@@ -27,7 +27,8 @@ function displayRemiseFivePercent() {
       // Format number as French (France)
       const formattedFivePercentRemise = new Intl.NumberFormat('fr-FR', {
         style: 'currency',
-        currency: 'EUR'
+        currency: 'EUR',
+        useGrouping: true
       }).format(fivePercentRemise);
       const tontapRemiseHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${formattedFivePercentRemise} TTC</span></p>`;
       if (document.getElementsByClassName('tontapRemise')[0]) {
