@@ -1,7 +1,7 @@
 (function waitForEcwidOnAPILoaded(retries = 10, delay = 500) {
   if (typeof Ecwid !== 'undefined' && Ecwid.OnAPILoaded && typeof Ecwid.OnAPILoaded.add === 'function') {
     Ecwid.OnAPILoaded.add(function () {
-      console.log("Ecwid JS API is loaded (from retry).");
+      console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
       if (Ecwid.Cart) {
         Ecwid.Cart.calculateTotal(function (order) {
           console.log('Ecwid.Cart.calculateTotal : ' + JSON.stringify(order));
