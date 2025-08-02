@@ -28,7 +28,7 @@ function displayRemiseFivePercent(cart) {
         const customElement = document.createElement('div');
         const highlightColor = '#EEE8AA'; // Pale Goldenrod
         const cartTotal = (order.total * 0.05).toFixed(2); // Calculate 5% of the total
-        customElement.innerHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${cartTotal} €</span></p>`;
+        customElement.innerHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${cartTotal} € TTC</span></p>`;
         cartContainer.appendChild(customElement);
       });
     }
