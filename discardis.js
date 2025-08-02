@@ -3,7 +3,7 @@
     Ecwid.OnAPILoaded.add(function () {
       console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
       waitForEcwidCartObject(retries = 10, delay = 500);
-      Ecwid.OnCartChanged.add(function (cart) {
+      Ecwid.OnCartChanged.add(function () {
         displayRemiseFivePercent(cart);
       });
     });
@@ -14,7 +14,7 @@
   }
 })();
 
-function displayRemiseFivePercent(cart) {
+function displayRemiseFivePercent() {
   const cartContainer = document.getElementsByClassName('ec-cart__buy-and-save')[0];
   if (cartContainer) {
     console.log("'ec-cart__buy-and-save' exists.");
@@ -26,13 +26,15 @@ function displayRemiseFivePercent(cart) {
       customElement.innerHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${cartTotal} € TTC</span></p>`;
       cartContainer.appendChild(customElement);
     });
+  } else {
+    console.log("'ec-cart__buy-and-save' does not exist.");
   }
 }
 
 function waitForEcwidCartObject(retries, delay) {
   if (Ecwid.Cart) {
     console.log("Ecwid.Cart object is available (from retry " + (10 - retries) + " ).");
-    displayRemiseFivePercent(Ecwid.Cart);
+    displayRemiseFivePercent();
   } else if (retries > 0) {
     setTimeout(() => waitForEcwidOnAPILoaded(retries - 1, delay), delay);
   } else {
