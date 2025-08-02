@@ -1,12 +1,18 @@
-console.log(Ecwid.OnAPILoaded); // Check the value of Ecwid.OnAPILoaded
-Ecwid.OnAPILoaded.add(function () {
-  console.log("Ecwid JS API is loaded.");
-  if (Ecwid.Cart) { // Check if Ecwid.Cart is defined
-    Ecwid.Cart.calculateTotal(function (order) {
-      console.log('Ecwid.Cart.calculateTotal : ' + JSON.stringify(order));
+(function waitForEcwidOnAPILoaded(retries = 10, delay = 500) {
+  if (typeof Ecwid !== 'undefined' && Ecwid.OnAPILoaded && typeof Ecwid.OnAPILoaded.add === 'function') {
+    Ecwid.OnAPILoaded.add(function () {
+      console.log("Ecwid JS API is loaded (from retry).");
+      if (Ecwid.Cart) {
+        Ecwid.Cart.calculateTotal(function (order) {
+          console.log('Ecwid.Cart.calculateTotal : ' + JSON.stringify(order));
+        });
+      } else {
+        console.warn("Ecwid.Cart is not available yet (from retry).");
+      }
     });
+  } else if (retries > 0) {
+    setTimeout(() => waitForEcwidOnAPILoaded(retries - 1, delay), delay);
   } else {
-    console.warn("Ecwid.Cart is not available yet.");
-    // Optionally, you could retry after a short delay or listen for another event if available
+    console.error("Ecwid.OnAPILoaded is not available after multiple attempts.");
   }
-});
+})();
