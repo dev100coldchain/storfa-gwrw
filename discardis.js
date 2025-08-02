@@ -7,11 +7,13 @@
           console.log('Ecwid.Cart.calculateTotal : ' + JSON.stringify(order));
         });
         console.log('"ec-cart-summary__total" getElementsByClassName :');
-        const elements = document.getElementsByClassName("ec-cart-summary__total");
-        // Loop through and log each element
-        for (let i = 0; i < elements.length; i++) {
-          console.log(elements[i]);
-        }
+        const targetElement = document.getElementsByClassName("ec-cart-summary__total")[0];
+        // Create a new element
+        const newElement = document.createElement("span");
+        newElement.textContent = "Bonne fin de journée";
+
+        // Insert it after the target
+        targetElement.after(newElement);
       } else {
         console.warn("Ecwid.Cart is not available yet (from retry).");
       }
