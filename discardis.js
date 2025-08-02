@@ -4,7 +4,7 @@
       console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
       waitForEcwidCartObject(retries = 10, delay = 500);
       Ecwid.OnCartChanged.add(function () {
-        displayRemiseFivePercent(cart);
+        displayRemiseFivePercent();
       });
     });
   } else if (retries > 0) {
