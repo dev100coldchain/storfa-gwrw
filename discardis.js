@@ -6,19 +6,19 @@
         Ecwid.Cart.calculateTotal(function (order) {
           console.log('Ecwid.Cart.calculateTotal : ' + JSON.stringify(order));
         });
-        Ecwid.OnPageLoaded.add(function (page) {
-          if (page.type === "CART") {
-            const cartContainer = document.querySelector('.ec-cart');
-            if (cartContainer) {
-              const customElement = document.createElement('div');
-              customElement.innerHTML = '<p>Bonne fin de journée</p>';
-              cartContainer.appendChild(customElement);
-            }
-          }
-        });
       } else {
         console.warn("Ecwid.Cart is not available yet (from retry).");
       }
+      Ecwid.OnPageLoaded.add(function (page) {
+        if (page.type === "CART") {
+          const cartContainer = document.querySelector('.ec-cart');
+          if (cartContainer) {
+            const customElement = document.createElement('div');
+            customElement.innerHTML = '<p>Bonne fin de journée</p>';
+            cartContainer.appendChild(customElement);
+          }
+        }
+      });
     });
   } else if (retries > 0) {
     setTimeout(() => waitForEcwidOnAPILoaded(retries - 1, delay), delay);
