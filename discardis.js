@@ -9,6 +9,9 @@
       Ecwid.OnPageLoaded.add(function () {
         displayRemiseFivePercent();
       });
+      Ecwid.OnPageSwitch.add(function () {
+        displayRemiseFivePercent();
+      }
     });
   } else if (retries > 0) {
     setTimeout(() => waitForEcwidOnAPILoaded(retries - 1, delay), delay);
