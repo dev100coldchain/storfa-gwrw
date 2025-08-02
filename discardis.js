@@ -6,9 +6,12 @@
         Ecwid.Cart.calculateTotal(function (order) {
           console.log('Ecwid.Cart.calculateTotal : ' + JSON.stringify(order));
         });
-        console.log('".ec-cart-summary__total" search :' );
-        const items = document.querySelectorAll(".ec-cart-summary__total");
-        items.forEach(item => console.log(item.textContent));
+        console.log('"ec-cart-summary__total" getElementsByClassName :');
+        const elements = document.getElementsByClassName("ec-cart-summary__total");
+        // Loop through and log each element
+        for (let i = 0; i < elements.length; i++) {
+          console.log(elements[i]);
+        }
       } else {
         console.warn("Ecwid.Cart is not available yet (from retry).");
       }
