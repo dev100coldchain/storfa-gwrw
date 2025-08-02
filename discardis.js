@@ -13,7 +13,7 @@
         if (page.type === "CART") {
           const cartContainer = document.getElementsByClassName('ec-cart__sidebar-inner')[0];
           if (cartContainer) {
-            console.log("cartContainer is exists.");
+            console.log("'ec-cart__sidebar-inner' exists.");
             const customElement = document.createElement('div');
             customElement.innerHTML = '<p>Bonne fin de journée</p>';
             cartContainer.appendChild(customElement);
