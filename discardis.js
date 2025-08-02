@@ -36,7 +36,7 @@ function displayRemiseFivePercent() {
         currency: 'EUR',
         useGrouping: true
       }).format(fivePercentRemise);
-      const tontapRemiseHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${formattedFivePercentRemise} TTC</span></p>`;
+      const tontapRemiseHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à récep de la fac : ${formattedFivePercentRemise} TTC</span></p>`;
       if (document.getElementsByClassName('tontapRemise')[0]) {
         document.getElementsByClassName('tontapRemise')[0].innerHTML = tontapRemiseHTML;
       } else {
