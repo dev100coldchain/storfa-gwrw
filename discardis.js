@@ -1,5 +1,5 @@
 (function waitForEcwidOnAPILoaded(retries = 10, delay = 500) {
-  console.log("window.location.hostname : " + window.location.hostname) + + window.location.pathname);
+  console.log("window.location.hostname : " + window.location.hostname + " window.location.pathname : " + window.location.pathname);
   if (typeof Ecwid !== 'undefined' && Ecwid.OnAPILoaded && typeof Ecwid.OnAPILoaded.add === 'function' &&
     Ecwid.OnCartChanged && typeof Ecwid.OnCartChanged.add === 'function' &&
     window.location.pathname !== "/") {
