@@ -1,3 +1,4 @@
+console.log(Ecwid.OnAPILoaded); // Check the value of Ecwid.OnAPILoaded
 Ecwid.OnAPILoaded.add(function () {
   console.log("Ecwid JS API is loaded.");
   if (Ecwid.Cart) { // Check if Ecwid.Cart is defined
