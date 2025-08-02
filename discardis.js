@@ -6,14 +6,16 @@
         Ecwid.Cart.calculateTotal(function (order) {
           console.log('Ecwid.Cart.calculateTotal : ' + JSON.stringify(order));
         });
-        console.log('"ec-cart-summary__total" getElementsByClassName :');
-        const targetElement = document.getElementsByClassName("ec-cart-summary__total")[0];
-        // Create a new element
-        const newElement = document.createElement("span");
-        newElement.textContent = "Bonne fin de journée";
-
-        // Insert it after the target
-        targetElement.after(newElement);
+        Ecwid.OnPageLoaded.add(function (page) {
+          if (page.type === "CART") {
+            const cartContainer = document.querySelector('.ec-cart');
+            if (cartContainer) {
+              const customElement = document.createElement('div');
+              customElement.innerHTML = '<p>Bonne fin de journée</p>';
+              cartContainer.appendChild(customElement);
+            }
+          }
+        });
       } else {
         console.warn("Ecwid.Cart is not available yet (from retry).");
       }
