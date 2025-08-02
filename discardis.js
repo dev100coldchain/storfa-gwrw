@@ -21,10 +21,16 @@ function displayRemiseFivePercent() {
     Ecwid.Cart.calculateTotal(function (order) {
       console.log(JSON.stringify(order));
       const customElement = document.createElement('div');
+      customElement.className = 'tontapRemise';
       const highlightColor = '#EEE8AA'; // Pale Goldenrod
       const cartTotal = (order.total * 0.05).toFixed(2); // Calculate 5% of the total
-      customElement.innerHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${cartTotal} € TTC</span></p>`;
-      cartContainer.appendChild(customElement);
+      const tontapRemiseHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${cartTotal} € TTC</span></p>`;
+      if (document.getElementsByClassName('tontapRemise')[0]) {
+        document.getElementsByClassName('tontapRemise')[0].innerHTML = tontapRemiseHTML;
+      } else {
+        cartContainer.appendChild(customElement);
+        customElement.innerHTML = tontapRemiseHTML;
+      }
     });
   } else {
     console.log("'ec-cart__buy-and-save' does not exist.");
