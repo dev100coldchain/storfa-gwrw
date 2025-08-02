@@ -17,7 +17,7 @@ function displayRemiseFivePercent(cart) {
   const cartContainer = document.getElementsByClassName('ec-cart__buy-and-save')[0];
   if (cartContainer) {
     console.log("'ec-cart__buy-and-save' exists.");
-    cart.calculateTotal(function (order) {
+    Ecwid.Cart.calculateTotal(function (order) {
       console.log(JSON.stringify(order));
       const customElement = document.createElement('div');
       const highlightColor = '#EEE8AA'; // Pale Goldenrod
