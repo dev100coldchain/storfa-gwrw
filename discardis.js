@@ -11,7 +11,8 @@
       }
       Ecwid.OnPageLoaded.add(function (page) {
         if (page.type === "CART") {
-          const cartContainer = document.getElementsByClassName('ec-cart__sidebar-inner')[0];
+          // const cartContainer = document.getElementsByClassName('ec-cart__sidebar-inner')[0];
+          const cartContainer = document.getElementsByClassName('ec-cart__buy-and-save')[0];
           if (cartContainer) {
             console.log("'ec-cart__sidebar-inner' exists.");
             const customElement = document.createElement('div');
