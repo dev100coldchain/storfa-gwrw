@@ -32,12 +32,12 @@ function displayRemiseFivePercent() {
 }
 
 function waitForEcwidCartObject(retries, delay) {
-  if (Ecwid.Cart) {
-    console.log("Ecwid.Cart object is available (from retry " + (10 - retries) + " ).");
+  if (Ecwid.Cart && document.getElementsByClassName('ec-cart__buy-and-save')[0]) {
+    console.log("Ecwid.Cart object and ec-cart__buy-and-save element are both available (from retry " + (10 - retries) + " ).");
     displayRemiseFivePercent();
   } else if (retries > 0) {
     setTimeout(() => waitForEcwidOnAPILoaded(retries - 1, delay), delay);
   } else {
-    console.error("Ecwid.Cart object is not available after multiple attempts.");
+    console.error("Ecwid.Cart object and ec-cart__buy-and-save element are not both available after multiple attempts.");
   }
 }
