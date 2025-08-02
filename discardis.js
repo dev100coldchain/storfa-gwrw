@@ -23,8 +23,13 @@ function displayRemiseFivePercent() {
       const customElement = document.createElement('div');
       customElement.className = 'tontapRemise';
       const highlightColor = '#EEE8AA'; // Pale Goldenrod
-      const cartTotal = (order.total * 0.05).toFixed(2); // Calculate 5% of the total
-      const tontapRemiseHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${cartTotal} € TTC</span></p>`;
+      const fivePercentRemise = (order.total * 0.05).toFixed(2); // Calculate 5% of the total
+      // Format number as French (France)
+      const formattedFivePercentRemise = new Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR'
+      }).format(fivePercentRemise);
+      const tontapRemiseHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${formattedFivePercentRemise} TTC</span></p>`;
       if (document.getElementsByClassName('tontapRemise')[0]) {
         document.getElementsByClassName('tontapRemise')[0].innerHTML = tontapRemiseHTML;
       } else {
