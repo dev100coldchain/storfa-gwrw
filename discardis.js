@@ -2,6 +2,7 @@
   if (typeof Ecwid !== 'undefined' && Ecwid.OnAPILoaded && typeof Ecwid.OnAPILoaded.add === 'function') {
     Ecwid.OnAPILoaded.add(function () {
       console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
+      waitForEcwidCartObject(retries = 10, delay = 500);
       Ecwid.OnCartChanged.add(function (cart) {
         displayRemiseFivePercent(cart);
       });
@@ -25,5 +26,16 @@ function displayRemiseFivePercent(cart) {
       customElement.innerHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${cartTotal} € TTC</span></p>`;
       cartContainer.appendChild(customElement);
     });
+  }
+}
+
+function waitForEcwidCartObject(retries, delay) {
+  if (Ecwid.Cart) {
+    console.log("Ecwid.Cart object is available (from retry " + (10 - retries) + " ).");
+    displayRemiseFivePercent(Ecwid.Cart);
+  } else if (retries > 0) {
+    setTimeout(() => waitForEcwidOnAPILoaded(retries - 1, delay), delay);
+  } else {
+    console.error("Ecwid.Cart object is not available after multiple attempts.");
   }
 }
