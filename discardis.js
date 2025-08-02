@@ -6,6 +6,9 @@
         Ecwid.Cart.calculateTotal(function (order) {
           console.log('Ecwid.Cart.calculateTotal : ' + JSON.stringify(order));
         });
+        console.log('".ec-cart-summary__total" search :' );
+        const items = document.querySelectorAll(".ec-cart-summary__total");
+        items.forEach(item => console.log(item.textContent));
       } else {
         console.warn("Ecwid.Cart is not available yet (from retry).");
       }
