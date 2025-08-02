@@ -1,7 +1,8 @@
 (function waitForEcwidOnAPILoaded(retries = 10, delay = 500) {
   if (typeof Ecwid !== 'undefined' && Ecwid.OnAPILoaded && typeof Ecwid.OnAPILoaded.add === 'function' &&
-        Ecwid.OnCartChanged && typeof Ecwid.OnCartChanged.add === 'function' &&
-        window.location.hostname !== "100coldchain.com") {
+    Ecwid.OnCartChanged && typeof Ecwid.OnCartChanged.add === 'function' &&
+    window.location.hostname !== "100coldchain.com") {
+    console.log("window.location.hostname : " + window.location.hostname);
     Ecwid.OnAPILoaded.add(function () {
       console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
       waitForEcwidCartObject(retries = 10, delay = 500);
