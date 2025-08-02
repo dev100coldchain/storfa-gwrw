@@ -2,7 +2,7 @@
   if (typeof Ecwid !== 'undefined' && Ecwid.OnAPILoaded && typeof Ecwid.OnAPILoaded.add === 'function') {
     Ecwid.OnAPILoaded.add(function () {
       console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
-      if (Ecwid.Cart && (document.getElementsByClassName('ec-cart__buy-and-save').length > 0)) {
+      if (Ecwid.Cart) {
         displayRemiseFivePercent(Ecwid.Cart);
         Ecwid.OnCartChanged.add(function (cart) {
           displayRemiseFivePercent(Ecwid.Cart);
@@ -19,18 +19,16 @@
 })();
 
 function displayRemiseFivePercent(cart) {
-  if (page.type === "CART") {
-    const cartContainer = document.getElementsByClassName('ec-cart__buy-and-save')[0];
-    if (cartContainer) {
-      console.log("'ec-cart__buy-and-save' exists.");
-      cart.calculateTotal(function (order) {
-        console.log(JSON.stringify(order));
-        const customElement = document.createElement('div');
-        const highlightColor = '#EEE8AA'; // Pale Goldenrod
-        const cartTotal = (order.total * 0.05).toFixed(2); // Calculate 5% of the total
-        customElement.innerHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${cartTotal} € TTC</span></p>`;
-        cartContainer.appendChild(customElement);
-      });
-    }
+  const cartContainer = document.getElementsByClassName('ec-cart__buy-and-save')[0];
+  if (cartContainer) {
+    console.log("'ec-cart__buy-and-save' exists.");
+    cart.calculateTotal(function (order) {
+      console.log(JSON.stringify(order));
+      const customElement = document.createElement('div');
+      const highlightColor = '#EEE8AA'; // Pale Goldenrod
+      const cartTotal = (order.total * 0.05).toFixed(2); // Calculate 5% of the total
+      customElement.innerHTML = `<p><span style="background-color: ${highlightColor};">Remise 5% sur la prochaine commande avec paiement à réception de la facture : ${cartTotal} € TTC</span></p>`;
+      cartContainer.appendChild(customElement);
+    });
   }
 }
