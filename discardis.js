@@ -2,7 +2,7 @@
   if (typeof Ecwid !== 'undefined' && Ecwid.OnAPILoaded && typeof Ecwid.OnAPILoaded.add === 'function') {
     Ecwid.OnAPILoaded.add(function () {
       console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
-      if (Ecwid.Cart && page.type === "CART") {
+      if (Ecwid.Cart && (document.getElementsByClassName('ec-cart__buy-and-save').length > 0)) {
         displayRemiseFivePercent(Ecwid.Cart);
         Ecwid.OnCartChanged.add(function (cart) {
           displayRemiseFivePercent(Ecwid.Cart);
