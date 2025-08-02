@@ -6,6 +6,9 @@
       Ecwid.OnCartChanged.add(function () {
         displayRemiseFivePercent();
       });
+      Ecwid.OnPageLoaded.add(function () {
+        displayRemiseFivePercent();
+      });
     });
   } else if (retries > 0) {
     setTimeout(() => waitForEcwidOnAPILoaded(retries - 1, delay), delay);
