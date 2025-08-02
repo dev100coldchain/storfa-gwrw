@@ -16,7 +16,7 @@
           if (cartContainer) {
             console.log("'ec-cart__sidebar-inner' exists.");
             Ecwid.OnCartChanged.add(function (cart) {
-              cart.calculateTotal(function (order) {
+              Ecwid.Cart.calculateTotal(function (order) {
                 console.log(JSON.stringify(order));
                 const customElement = document.createElement('div');
                 // customElement.innerHTML = '<p>Bonne fin de journée !</p>';
