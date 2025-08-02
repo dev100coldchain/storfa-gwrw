@@ -17,7 +17,7 @@
             console.log("'ec-cart__sidebar-inner' exists.");
             const customElement = document.createElement('div');
             // customElement.innerHTML = '<p>Bonne fin de journée !</p>';
-            customElement.innerHTML = '<p>Remise 5% sur la prochaine commande avec un paiement sur réception de la facture</p>';
+            customElement.innerHTML = '<p><mark>Remise 5% sur la prochaine commande avec un paiement sur réception de la facture</mark></p>';
             cartContainer.appendChild(customElement);
           }
         }
