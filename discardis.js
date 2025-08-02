@@ -15,7 +15,7 @@
           if (cartContainer) {
             console.log("'ec-cart__sidebar-inner' exists.");
             const customElement = document.createElement('div');
-            customElement.innerHTML = '<p>Bonne fin de journée</p>';
+            customElement.innerHTML = '<p>Bonne fin de journée !</p>';
             cartContainer.appendChild(customElement);
           }
         }
