@@ -2,14 +2,10 @@
   if (typeof Ecwid !== 'undefined' && Ecwid.OnAPILoaded && typeof Ecwid.OnAPILoaded.add === 'function') {
     Ecwid.OnAPILoaded.add(function () {
       console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
-      if (Ecwid.Cart) {
+      displayRemiseFivePercent(Ecwid.Cart);
+      Ecwid.OnCartChanged.add(function (cart) {
         displayRemiseFivePercent(Ecwid.Cart);
-        Ecwid.OnCartChanged.add(function (cart) {
-          displayRemiseFivePercent(Ecwid.Cart);
-        });
-      } else {
-        console.warn("Ecwid.Cart is not available yet (from retry).");
-      }
+      });
     });
   } else if (retries > 0) {
     setTimeout(() => waitForEcwidOnAPILoaded(retries - 1, delay), delay);
