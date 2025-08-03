@@ -63,8 +63,8 @@ function removeTextFormatColonSpace() {
 }
 
 function waitForEcwidCartObject(retries, delay) {
-  if (Ecwid.Cart && document.getElementsByClassName('ec-cart__buy-and-save').length) {
-    console.log("Ecwid.Cart object and ec-cart__buy-and-save element are both available (from retry " + (10 - retries) + " ).");
+  if (Ecwid.Cart && document.getElementsByClassName('ec-cart__buy-and-save').length && document.getElementsByClassName('ec-cart-option ec-cart-option--key') {
+    console.log("Ecwid.Cart object, ec-cart__buy-and-save element and ec-cart-option ec-cart-option--key are all available (from retry " + (10 - retries) + " ).");
     displayRemiseFivePercent();
     removeTextFormatColonSpace();
   } else if (retries > 0) {
