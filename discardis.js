@@ -7,15 +7,19 @@
       waitForEcwidCartObject(retries = 10, delay = 500);
       Ecwid.OnCartChanged.add(function () {
         displayRemiseFivePercent();
+        removeTextFormatColonSpace();
       });
       Ecwid.OnPageLoaded.add(function () {
         displayRemiseFivePercent();
+        removeTextFormatColonSpace();
       });
       Ecwid.OnPageSwitch.add(function () {
         displayRemiseFivePercent();
+        removeTextFormatColonSpace();
       });
       Ecwid.OnOrderPlaced.add(function () {
         displayRemiseFivePercent();
+        removeTextFormatColonSpace();
       });
     });
   } else if (retries > 0) {
