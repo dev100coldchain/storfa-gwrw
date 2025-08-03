@@ -55,10 +55,18 @@ function displayRemiseFivePercent() {
   }
 }
 
+function removeTextFormatColonSpace() {
+  const elements = document.getElementsByClassName('ec-cart-option ec-cart-option--key');
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].innerHTML = '';
+  }
+}
+
 function waitForEcwidCartObject(retries, delay) {
   if (Ecwid.Cart && document.getElementsByClassName('ec-cart__buy-and-save').length) {
     console.log("Ecwid.Cart object and ec-cart__buy-and-save element are both available (from retry " + (10 - retries) + " ).");
     displayRemiseFivePercent();
+    removeTextFormatColonSpace();
   } else if (retries > 0) {
     setTimeout(() => waitForEcwidCartObject(retries - 1, delay), delay);
   } else {
