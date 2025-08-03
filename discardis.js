@@ -6,20 +6,19 @@
       console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
       waitForEcwidCartObject(retries = 10, delay = 500);
       Ecwid.OnCartChanged.add(function () {
-        displayRemiseFivePercent();
-        removeTextFormatColonSpace();
+        waitForEcwidCartObject(retries = 10, delay = 500);
       });
       Ecwid.OnPageLoaded.add(function () {
         displayRemiseFivePercent();
-        removeTextFormatColonSpace();
+        waitForEcwidCartObject(retries = 10, delay = 500);
       });
       Ecwid.OnPageSwitch.add(function () {
         displayRemiseFivePercent();
-        removeTextFormatColonSpace();
+        waitForEcwidCartObject(retries = 10, delay = 500);
       });
       Ecwid.OnOrderPlaced.add(function () {
         displayRemiseFivePercent();
-        removeTextFormatColonSpace();
+        waitForEcwidCartObject(retries = 10, delay = 500);
       });
     });
   } else if (retries > 0) {
