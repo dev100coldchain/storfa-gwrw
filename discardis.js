@@ -84,6 +84,8 @@ function removeTextFormatColonSpace() {
         const priceTextX = lineAmounts[0].innerHTML.replace(/\s/g, '').replace(/,/g, '.');
         const priceValue = priceTextX.match(/(\d+(\.\d+)?)/);
         console.log('Extracted price:', priceValue[1]);
+        const unitPrice = (parseFloat(priceValue[1]) / parseInt(extractedNumber)).toFixed(2);
+        console.log('Unit price:', unitPrice); // "1.00" from "12"
       }
     }
     // const unitPrice = (lineAmounts[0] / extractedNumber).toFixed(2).toString().replace(/./g, ',');
