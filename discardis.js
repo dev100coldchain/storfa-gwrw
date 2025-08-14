@@ -59,17 +59,18 @@ function displayRemiseFivePercent() {
 }
 
 function removeTextFormatColonSpace() {
-  const elements = document.getElementsByClassName('ec-cart-option ec-cart-option--key');
-  for (let i = 0; i < elements.length; i++) {
-    elements[i].innerHTML = '';
+  // const elements = document.getElementsByClassName('ec-cart-option ec-cart-option--key');
+  // for (let i = 0; i < elements.length; i++) {
+  //   elements[i].innerHTML = '';
+  // }
+
+  const containers = document.getElementsByClassName('ec-cart-item__wrap');
+  for (let i = 0; i < containers.length; i++) {
+    const child = containers[i];
+    if (child.classList.contains('ec-cart-option') && child.classList.contains('ec-cart-option--key')) {
+      child.innerHTML = '';
+    }
   }
-
-  const containers = document.querySelectorAll('.ec-cart-item__wrap');
-  const secondContainer = containers[0]; // zero-based index
-
-  const children = Array.from(secondContainer.children);
-  console.log(children);
-
 }
 
 function waitForEcwidCartObject(retries, delay) {
