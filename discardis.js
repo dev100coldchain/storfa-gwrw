@@ -68,13 +68,21 @@ function removeTextFormatColonSpace() {
   for (let i = 0; i < containers.length; i++) {
     console.log('arrived at marker');
     const container = containers[i];
-    for (let j = 0; j < container.children.length; j++) {
-      const child = container.children[j];
-      console.log('child.classList : ' + child.classList);
-      if (child.classList.contains('ec-cart-option') && child.classList.contains('ec-cart-option--key')) {
-        console.log('child.innerHTML : ' + child.innerHTML);
-      }
-    }
+
+    const descendants = container.querySelectorAll('*');
+    console.log('descendants count:', descendants.length);
+    descendants.forEach(descendant => {
+      console.log('descendant:', descendant);
+    });
+    
+    
+    // for (let j = 0; j < container.children.length; j++) {
+    //   const child = container.children[j];
+    //   console.log('child.classList : ' + child.classList);
+    //   if (child.classList.contains('ec-cart-option') && child.classList.contains('ec-cart-option--key')) {
+    //     console.log('child.innerHTML : ' + child.innerHTML);
+    //   }
+    // }
 
     // if (container.classList.contains('ec-cart-option') && container.classList.contains('ec-cart-option--key')) {
     //   container.innerHTML = '';
