@@ -83,7 +83,8 @@ function removeTextFormatColonSpace() {
         for (let k = 0; k < lineAmounts.length; k++) {
           lineAmounts[k].innerHTML = lineAmounts[k].innerHTML.replace(/,/g, '.');
         }
-        const unitPrice = (lineAmounts[0] / extractedNumber).toFixed(2).toString().replace(/./g, ',');
+        // const unitPrice = (lineAmounts[0] / extractedNumber).toFixed(2).toString().replace(/./g, ',');
+        const unitPrice = (lineAmounts[0] / extractedNumber);
         console.log('lineAmounts[0] : ', lineAmounts[0]);
         console.log('lineAmounts[0] / extractedNumber : ', '( ' + unitPrice + ' € )');
       }
