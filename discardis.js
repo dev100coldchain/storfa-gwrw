@@ -1,9 +1,9 @@
 (function waitForEcwidOnAPILoaded(retries = 10, delay = 500) {
-  console.log("window.location.hostname : " + window.location.hostname + " window.location.pathname : " + window.location.pathname);
+  // console.log("window.location.hostname : " + window.location.hostname + " window.location.pathname : " + window.location.pathname);
   if (typeof Ecwid !== 'undefined' && Ecwid.OnAPILoaded && typeof Ecwid.OnAPILoaded.add === 'function' &&
     Ecwid.OnCartChanged && typeof Ecwid.OnCartChanged.add === 'function') {
     Ecwid.OnAPILoaded.add(function () {
-      console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
+      // console.log("Ecwid JS API is loaded (from retry " + (10 - retries) + " ).");
       waitForEcwidCartObject(retries = 10, delay = 500);
       Ecwid.OnCartChanged.add(function () {
         waitForEcwidCartObject(retries = 10, delay = 500);
@@ -24,14 +24,14 @@
   } else if (retries > 0) {
     setTimeout(() => waitForEcwidOnAPILoaded(retries - 1, delay), delay);
   } else {
-    console.error("Ecwid.OnAPILoaded is not available after multiple attempts.");
+    // console.error("Ecwid.OnAPILoaded is not available after multiple attempts.");
   }
 })();
 
 function displayRemiseFivePercent() {
   const cartContainer = document.getElementsByClassName('ec-cart__buy-and-save')[0];
   if (cartContainer) {
-    console.log("'ec-cart__buy-and-save' exists.");
+    // console.log("'ec-cart__buy-and-save' exists.");
     Ecwid.Cart.calculateTotal(function (order) {
       // console.log(JSON.stringify(order));
       const customElement = document.createElement('div');
@@ -54,7 +54,7 @@ function displayRemiseFivePercent() {
       }
     });
   } else {
-    console.log("'ec-cart__buy-and-save' does not exist.");
+    // console.log("'ec-cart__buy-and-save' does not exist.");
   }
 }
 
@@ -74,12 +74,12 @@ function removeTextFormatColonSpace() {
 
 function waitForEcwidCartObject(retries, delay) {
   if (Ecwid.Cart && document.getElementsByClassName('ec-cart__buy-and-save').length && document.getElementsByClassName('ec-cart-option ec-cart-option--key').length) {
-    console.log("Ecwid.Cart object, ec-cart__buy-and-save element and ec-cart-option ec-cart-option--key are all available (from retry " + (10 - retries) + " ).");
+    // console.log("Ecwid.Cart object, ec-cart__buy-and-save element and ec-cart-option ec-cart-option--key are all available (from retry " + (10 - retries) + " ).");
     displayRemiseFivePercent();
     removeTextFormatColonSpace();
   } else if (retries > 0) {
     setTimeout(() => waitForEcwidCartObject(retries - 1, delay), delay);
   } else {
-    console.error("Ecwid.Cart object and ec-cart__buy-and-save element are not both available after multiple attempts.");
+    // console.error("Ecwid.Cart object and ec-cart__buy-and-save element are not both available after multiple attempts.");
   }
 }
