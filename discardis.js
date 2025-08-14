@@ -68,7 +68,7 @@ function removeTextFormatColonSpace() {
   const secondContainer = containers[0]; // zero-based index
 
   const children = Array.from(secondContainer.children);
-  console.log(children);
+  // console.log(children);
 
 }
 
