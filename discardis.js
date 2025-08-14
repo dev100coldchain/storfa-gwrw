@@ -69,15 +69,20 @@ function removeTextFormatColonSpace() {
     console.log('arrived at marker');
     const container = containers[i];
 
-    const descendants = container.querySelectorAll('*');
-    console.log('descendants count:', descendants.length);
-    descendants.forEach(descendant => {
-      if (descendant.classList.contains('ec-cart-option') && descendant.classList.contains('ec-cart-option--value')) {
-        console.log('descendant:', descendant);
-      }
-    });
-    
-    
+    const formatValues = container.getElementsByClassName('ec-cart-option ec-cart-option--value');
+    // for (let j = 0; j < optionDescendants.length; j++) {
+    console.log('formatValues[0] : ', formatValues[0]);
+    // }
+
+    // const descendants = container.querySelectorAll('*');
+    // console.log('descendants count:', descendants.length);
+    // descendants.forEach(descendant => {
+    //   if (descendant.classList.contains('ec-cart-option') && descendant.classList.contains('ec-cart-option--value')) {
+    //     console.log('descendant:', descendant);
+    //   }
+    // });
+
+
     // for (let j = 0; j < container.children.length; j++) {
     //   const child = container.children[j];
     //   console.log('child.classList : ' + child.classList);
