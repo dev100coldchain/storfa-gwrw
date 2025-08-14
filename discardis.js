@@ -76,15 +76,14 @@ function removeTextFormatColonSpace() {
     if (formatValues[0]) {
       const match = formatValues[0].textContent.match(/(\d+)x/);
       if (match) {
-        const extractedNumber = match;
+        const extractedNumber = match[1];
         // const extractedNumber = extractedNumberX.replace(/\w/g, '');
         console.log('Extracted number:', extractedNumber); // "12" from "Canette 12x44cl"
         // You can use extractedNumber as needed here
         const lineAmounts = container.getElementsByClassName('ec-cart-item__price-inner');
-        console.log('lineAmounts :', lineAmounts);
         const priceTextX = lineAmounts[0].innerHTML.replace(/,/g, '.');
         const priceValue = priceTextX.match(/(\d+(\.\d+)?)/);
-        console.log('Extracted price:', priceValue[0]);
+        console.log('Extracted price:', priceValue);
       }
     }
     // const unitPrice = (lineAmounts[0] / extractedNumber).toFixed(2).toString().replace(/./g, ',');
