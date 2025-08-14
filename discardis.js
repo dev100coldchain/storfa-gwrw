@@ -94,6 +94,8 @@ function removeTextFormatColonSpace() {
           currency: 'EUR'
         }).format(unitPrice);
         console.log('Total unités:', '('  + unitsTotal + 'x ' + formattedUnitPrice + ')');
+
+        formatValues[0].innerHTML = '  ('  + unitsTotal + 'x ' + formattedUnitPrice + ')';
       }
     }
   }
