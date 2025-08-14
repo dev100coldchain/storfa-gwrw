@@ -72,6 +72,10 @@ function removeTextFormatColonSpace() {
     const formatValues = container.getElementsByClassName('ec-cart-option ec-cart-option--value');
     // for (let j = 0; j < optionDescendants.length; j++) {
     console.log('formatValues[0] : ', formatValues[0]);
+
+    const lineAmounts = container.getElementsByClassName('ec-cart-item__price-inner');
+    // for (let j = 0; j < optionDescendants.length; j++) {
+    console.log('lineAmounts[0] : ', lineAmounts[0]);
     // }
 
     // const descendants = container.querySelectorAll('*');
