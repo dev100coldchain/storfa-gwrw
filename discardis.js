@@ -66,7 +66,6 @@ function removeTextFormatColonSpace() {
 
   const containers = document.getElementsByClassName('ec-cart-item__wrap');
   for (let i = 0; i < containers.length; i++) {
-    console.log('arrived at marker');
     const container = containers[i];
 
     const formatValues = container.getElementsByClassName('ec-cart-option ec-cart-option--value');
