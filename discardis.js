@@ -95,7 +95,7 @@ function removeTextFormatColonSpace() {
         }).format(unitPrice);
         console.log('Total unités:', '('  + unitsTotal + 'x ' + formattedUnitPrice + ')');
 
-        formatValues[0].innerHTML = formatValues[0].innerHTML + '  ('  + unitsTotal + 'x ' + formattedUnitPrice + ')';
+        // formatValues[0].innerHTML = formatValues[0].innerHTML + '  ('  + unitsTotal + 'x ' + formattedUnitPrice + ')';
       }
     }
   }
