@@ -72,7 +72,9 @@ function removeTextFormatColonSpace() {
     const descendants = container.querySelectorAll('*');
     console.log('descendants count:', descendants.length);
     descendants.forEach(descendant => {
-      console.log('descendant:', descendant);
+      if (descendant.classList.contains('ec-cart-option') && descendant.classList.contains('ec-cart-option--value')) {
+        console.log('descendant:', descendant);
+      }
     });
     
     
