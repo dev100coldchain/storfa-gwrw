@@ -83,33 +83,11 @@ function removeTextFormatColonSpace() {
         for (let k = 0; k < lineAmounts.length; k++) {
           lineAmounts[k].innerHTML = lineAmounts[k].innerHTML.replace(/,/g, '.');
         }
-        // for (let j = 0; j < optionDescendants.length; j++) {
+        const unitPrice = (lineAmounts[0] / extractedNumber).toFixed(2).replace(/./g, ',');
         console.log('lineAmounts[0] : ', lineAmounts[0]);
-
+        console.log('lineAmounts[0] / extractedNumber : ', unitPrice);
       }
     }
-
-    // }
-
-    // const descendants = container.querySelectorAll('*');
-    // console.log('descendants count:', descendants.length);
-    // descendants.forEach(descendant => {
-    //   if (descendant.classList.contains('ec-cart-option') && descendant.classList.contains('ec-cart-option--value')) {
-    //     console.log('descendant:', descendant);
-    //   }
-    // });
-
-
-    // for (let j = 0; j < container.children.length; j++) {
-    //   const child = container.children[j];
-    //   console.log('child.classList : ' + child.classList);
-    //   if (child.classList.contains('ec-cart-option') && child.classList.contains('ec-cart-option--key')) {
-    //     console.log('child.innerHTML : ' + child.innerHTML);
-    //   }
-    // }
-
-    // if (container.classList.contains('ec-cart-option') && container.classList.contains('ec-cart-option--key')) {
-    //   container.innerHTML = '';
   }
 }
 
