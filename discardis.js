@@ -83,6 +83,17 @@ function removeTextFormatColonSpace() {
         console.log('Extracted price:', priceValue[1]);
         const unitPrice = (parseFloat(priceValue[1]) / parseInt(extractedNumber)).toFixed(2);
         console.log('Unit price:', unitPrice); // "1.00" from "12"
+
+
+        const skuQuantityText = container.getElementsByClassName('form-control__select-text');
+        const skuQuantity = skuQuantityText[0].textContent.match(/(\d+)/)[1];
+        console.log('Extracted SKU quantity:', skuQuantity);
+        const unitsTotal = skuQuantity * extractedNumber;
+        const formattedUnitPrice = new Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR'
+        }).format(unitPrice);
+        console.log('Total unités:', '('  + unitsTotal + 'x ' + formattedUnitPrice + ')');
       }
     }
   }
