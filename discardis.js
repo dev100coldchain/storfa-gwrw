@@ -76,19 +76,20 @@ function removeTextFormatColonSpace() {
     if (formatValues[0]) {
       const match = formatValues[0].textContent.match(/(\d+)x/);
       if (match) {
-        const extractedNumber = match[1];
+        const extractedNumber = match[0];
         console.log('Extracted number:', extractedNumber); // "12" from "Canette 12x44cl"
         // You can use extractedNumber as needed here
         const lineAmounts = container.getElementsByClassName('ec-cart-item__price-inner');
-        for (let k = 0; k < lineAmounts.length; k++) {
-          lineAmounts[k].innerHTML = lineAmounts[k].innerHTML.replace(/,/g, '.');
-        }
-        // const unitPrice = (lineAmounts[0] / extractedNumber).toFixed(2).toString().replace(/./g, ',');
-        const unitPrice = (lineAmounts[0] / extractedNumber);
-        console.log('lineAmounts[0] : ', lineAmounts[0]);
-        console.log('lineAmounts[0] / extractedNumber : ', '( ' + unitPrice + ' € )');
+        const priceText = lineAmounts[0].innerHTML.replace(/,/g, '.');
+        const priceValue = priceText.match(/(\d+(\.\d+)?)/);
+        console.log('Extracted price:', priceValue);
       }
     }
+    // const unitPrice = (lineAmounts[0] / extractedNumber).toFixed(2).toString().replace(/./g, ',');
+
+    // const unitPrice = (lineAmounts[0] / extractedNumber);
+    // console.log('lineAmounts[0] : ', lineAmounts[0]);
+    // console.log('lineAmounts[0] / extractedNumber : ', '( ' + unitPrice + ' € )');
   }
 }
 
