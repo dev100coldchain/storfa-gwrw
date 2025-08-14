@@ -88,17 +88,20 @@ function removeTextFormatColonSpace() {
         console.log('Extracted price:', priceValue[1]);
         const unitPrice = (parseFloat(priceValue[1]) / parseInt(unitsTotal)).toFixed(2);
         console.log('Unit price:', unitPrice); // "1.00" from "12"
-        
+
         const formattedUnitPrice = new Intl.NumberFormat('fr-FR', {
           style: 'currency',
           currency: 'EUR'
         }).format(unitPrice);
-        console.log('Total unités:', '('  + unitsTotal + 'x ' + formattedUnitPrice + ')');
+        console.log('Total unités:', '(' + unitsTotal + 'x ' + formattedUnitPrice + ')');
 
-        const euroMatch = formatValues[0].textContent.match(/€/);
-        if (!euroMatch) {
-          formatValues[0].innerHTML = formatValues[0].innerHTML + '  ('  + unitsTotal + 'x ' + formattedUnitPrice + ')';
-        }
+
+        // Extract all text up to "cl"
+        const textUpToClMatch = formatValues[0].textContent.match(/^(.*?cl)/);
+        const textUpToCl = textUpToClMatch ? textUpToClMatch[1] : formatValues[0].textContent;
+
+        formatValues[0].innerHTML = textUpToCl + '  (' + unitsTotal + 'x ' + formattedUnitPrice + ')';
+
       }
     }
   }
