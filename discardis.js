@@ -76,7 +76,7 @@ function removeTextFormatColonSpace() {
     if (formatValues[0]) {
       const match = formatValues[0].textContent.match(/(\d+)x/);
       if (match) {
-        const extractedNumber = match[0];
+        const extractedNumber = match;
         // const extractedNumber = extractedNumberX.replace(/\w/g, '');
         console.log('Extracted number:', extractedNumber); // "12" from "Canette 12x44cl"
         // You can use extractedNumber as needed here
