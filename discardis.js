@@ -104,7 +104,7 @@ function removeTextFormatColonSpace() {
       // const textUpToCl = textUpToClMatch ? textUpToClMatch[1] : formatValues[0].textContent;
 
       console.log("final text : " + textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')');
-      formatValues[0].innerHTML = textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')';
+      // formatValues[0].innerHTML = textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')';
 
       }
   
