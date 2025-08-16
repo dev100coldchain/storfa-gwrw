@@ -71,52 +71,53 @@ function removeTextFormatColonSpace() {
     const formatValues = container.getElementsByClassName('ec-cart-option ec-cart-option--value');
 
     if (formatValues[0]) {
+      let extractedNumber = 1;
       const match = formatValues[0].textContent.match(/(\d+)x/);
       if (match) {
-        const extractedNumber = match[1];
+        extractedNumber = match[1];
         console.log('Extracted number:', extractedNumber); // "12" from "Canette 12x44cl"
-
-        const skuQuantityText = container.getElementsByClassName('form-control__select-text');
-        const skuQuantity = skuQuantityText[0].textContent.match(/(\d+)/)[1];
-        console.log('Extracted SKU quantity:', skuQuantity);
-
-        const unitsTotal = skuQuantity * extractedNumber;
-
-        const lineAmounts = container.getElementsByClassName('ec-cart-item__price-inner');
-        const priceTextX = lineAmounts[0].innerHTML.replace(/\s/g, '').replace(/,/g, '.');
-        const priceValue = priceTextX.match(/(\d+(\.\d+)?)/);
-        console.log('Extracted price:', priceValue[1]);
-        const unitPrice = (parseFloat(priceValue[1]) / parseInt(unitsTotal)).toFixed(2);
-        console.log('Unit price:', unitPrice); // "1.00" from "12"
-
-        const formattedUnitPrice = new Intl.NumberFormat('fr-FR', {
-          style: 'currency',
-          currency: 'EUR'
-        }).format(unitPrice);
-        console.log('Total unités:', '(' + unitsTotal + 'x ' + formattedUnitPrice + ')');
-
-
-        // Extract all text up to "cl"
-        const textUpToClMatch = formatValues[0].textContent.match(/^(.*?cl)/);
-        console.log( 'textUpToClMatch : ' + textUpToClMatch[1]);
-        // const textUpToCl = textUpToClMatch ? textUpToClMatch[1] : formatValues[0].textContent;
-
-        console.log("final text : " + textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')');
-        // console.log("final text : " + textUpToClMatch + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')');
-
       }
+
+      const skuQuantityText = container.getElementsByClassName('form-control__select-text');
+      const skuQuantity = skuQuantityText[0].textContent.match(/(\d+)/)[1];
+      console.log('Extracted SKU quantity:', skuQuantity);
+
+      const unitsTotal = skuQuantity * extractedNumber;
+
+      const lineAmounts = container.getElementsByClassName('ec-cart-item__price-inner');
+      const priceTextX = lineAmounts[0].innerHTML.replace(/\s/g, '').replace(/,/g, '.');
+      const priceValue = priceTextX.match(/(\d+(\.\d+)?)/);
+      console.log('Extracted price:', priceValue[1]);
+      const unitPrice = (parseFloat(priceValue[1]) / parseInt(unitsTotal)).toFixed(2);
+      console.log('Unit price:', unitPrice); // "1.00" from "12"
+
+      const formattedUnitPrice = new Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR'
+      }).format(unitPrice);
+      console.log('Total unités:', '(' + unitsTotal + 'x ' + formattedUnitPrice + ')');
+
+
+      // Extract all text up to "cl"
+      const textUpToClMatch = formatValues[0].textContent.match(/^(.*?(cl|L))/);
+      console.log('textUpToClMatch : ' + textUpToClMatch[1]);
+      // const textUpToCl = textUpToClMatch ? textUpToClMatch[1] : formatValues[0].textContent;
+
+      console.log("final text : " + textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')');
+      // console.log("final text : " + textUpToClMatch + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')');
+
+    }
+
+  }
+
+  function waitForEcwidCartObject(retries, delay) {
+    if (Ecwid.Cart && document.getElementsByClassName('ec-cart__buy-and-save').length && document.getElementsByClassName('ec-cart-option ec-cart-option--key').length) {
+      // console.log("Ecwid.Cart object, ec-cart__buy-and-save element and ec-cart-option ec-cart-option--key are all available (from retry " + (10 - retries) + " ).");
+      displayRemiseFivePercent();
+      removeTextFormatColonSpace();
+    } else if (retries > 0) {
+      setTimeout(() => waitForEcwidCartObject(retries - 1, delay), delay);
+    } else {
+      // console.error("Ecwid.Cart object and ec-cart__buy-and-save element are not both available after multiple attempts.");
     }
   }
-}
-
-function waitForEcwidCartObject(retries, delay) {
-  if (Ecwid.Cart && document.getElementsByClassName('ec-cart__buy-and-save').length && document.getElementsByClassName('ec-cart-option ec-cart-option--key').length) {
-    // console.log("Ecwid.Cart object, ec-cart__buy-and-save element and ec-cart-option ec-cart-option--key are all available (from retry " + (10 - retries) + " ).");
-    displayRemiseFivePercent();
-    removeTextFormatColonSpace();
-  } else if (retries > 0) {
-    setTimeout(() => waitForEcwidCartObject(retries - 1, delay), delay);
-  } else {
-    // console.error("Ecwid.Cart object and ec-cart__buy-and-save element are not both available after multiple attempts.");
-  }
-}
