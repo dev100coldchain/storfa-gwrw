@@ -78,35 +78,35 @@ function removeTextFormatColonSpace() {
       }
       if (match) {
         extractedNumber = match[1];
-        console.log('Extracted number:', extractedNumber); // "12" from "Canette 12x44cl"
+        // console.log('Extracted number:', extractedNumber); // "12" from "Canette 12x44cl"
       }
 
       const skuQuantityText = container.getElementsByClassName('form-control__select-text');
       const skuQuantity = skuQuantityText[0].textContent.match(/(\d+)/)[1];
-      console.log('Extracted SKU quantity:', skuQuantity);
+      // console.log('Extracted SKU quantity:', skuQuantity);
 
       const unitsTotal = skuQuantity * extractedNumber;
 
       const lineAmounts = container.getElementsByClassName('ec-cart-item__price-inner');
       const priceTextX = lineAmounts[0].innerHTML.replace(/\s/g, '').replace(/,/g, '.');
       const priceValue = priceTextX.match(/(\d+(\.\d+)?)/);
-      console.log('Extracted price:', priceValue[1]);
+      // console.log('Extracted price:', priceValue[1]);
       const unitPrice = (parseFloat(priceValue[1]) / parseInt(unitsTotal)).toFixed(2);
-      console.log('Unit price:', unitPrice); // "1.00" from "12"
+      // console.log('Unit price:', unitPrice); // "1.00" from "12"
 
       const formattedUnitPrice = new Intl.NumberFormat('fr-FR', {
         style: 'currency',
         currency: 'EUR'
       }).format(unitPrice);
-      console.log('Total unités:', '(' + unitsTotal + 'x ' + formattedUnitPrice + ')');
+      // console.log('Total unités:', '(' + unitsTotal + 'x ' + formattedUnitPrice + ')');
 
 
       // Extract all text up to "cl"
       const textUpToClMatch = formatValues[0].textContent.match(/^(.*?(cl|L))/);
-      console.log('textUpToClMatch : ' + textUpToClMatch[1]);
+      // console.log('textUpToClMatch : ' + textUpToClMatch[1]);
       // const textUpToCl = textUpToClMatch ? textUpToClMatch[1] : formatValues[0].textContent;
 
-      console.log("final text : " + textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')');
+      // console.log("final text : " + textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')');
       formatValues[0].innerHTML = textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')';
 
     }
