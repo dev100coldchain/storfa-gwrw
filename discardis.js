@@ -72,7 +72,10 @@ function removeTextFormatColonSpace() {
 
     if (formatValues[0]) {
       let extractedNumber = 1;
-      const match = formatValues[0].textContent.match(/(\d+)x/);
+      let match = 0;
+      if (!formatValues[0].textContent.match(/Fût/)) {
+        match = formatValues[0].textContent.match(/(\d+)x/);
+      }
       if (match) {
         extractedNumber = match[1];
         console.log('Extracted number:', extractedNumber); // "12" from "Canette 12x44cl"
@@ -104,22 +107,22 @@ function removeTextFormatColonSpace() {
       // const textUpToCl = textUpToClMatch ? textUpToClMatch[1] : formatValues[0].textContent;
 
       console.log("final text : " + textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')');
-      // formatValues[0].innerHTML = textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')';
+      formatValues[0].innerHTML = textUpToClMatch[1] + ' (' + unitsTotal + 'x ' + formattedUnitPrice + ')';
 
-      }
-  
     }
+
   }
-  
-  // Move this function outside of removeTextFormatColonSpace
-  function waitForEcwidCartObject(retries, delay) {
-    if (Ecwid.Cart && document.getElementsByClassName('ec-cart__buy-and-save').length && document.getElementsByClassName('ec-cart-option ec-cart-option--key').length) {
-      // console.log("Ecwid.Cart object, ec-cart__buy-and-save element and ec-cart-option ec-cart-option--key are all available (from retry " + (10 - retries) + " ).");
-      displayRemiseFivePercent();
-      removeTextFormatColonSpace();
-    } else if (retries > 0) {
-      setTimeout(() => waitForEcwidCartObject(retries - 1, delay), delay);
-    } else {
-      // console.error("Ecwid.Cart object and ec-cart__buy-and-save element are not both available after multiple attempts.");
-    }
+}
+
+// Move this function outside of removeTextFormatColonSpace
+function waitForEcwidCartObject(retries, delay) {
+  if (Ecwid.Cart && document.getElementsByClassName('ec-cart__buy-and-save').length && document.getElementsByClassName('ec-cart-option ec-cart-option--key').length) {
+    // console.log("Ecwid.Cart object, ec-cart__buy-and-save element and ec-cart-option ec-cart-option--key are all available (from retry " + (10 - retries) + " ).");
+    displayRemiseFivePercent();
+    removeTextFormatColonSpace();
+  } else if (retries > 0) {
+    setTimeout(() => waitForEcwidCartObject(retries - 1, delay), delay);
+  } else {
+    // console.error("Ecwid.Cart object and ec-cart__buy-and-save element are not both available after multiple attempts.");
   }
+}
