@@ -98,6 +98,7 @@ function removeTextFormatColonSpace() {
 
         // Extract all text up to "cl"
         const textUpToClMatch = formatValues[0].textContent.match(/^(.*?cl)/);
+        console.log( 'textUpToClMatch : ' + textUpToClMatch);
         const textUpToCl = textUpToClMatch ? textUpToClMatch[1] : formatValues[0].textContent;
 
         // formatValues[0].innerHTML = textUpToCl + '  (' + unitsTotal + 'x ' + formattedUnitPrice + ')';
