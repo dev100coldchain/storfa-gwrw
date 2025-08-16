@@ -73,6 +73,7 @@ function removeTextFormatColonSpace() {
     if (formatValues[0]) {
       let extractedNumber = 1;
       let match = 0;
+      console.log("formatValues : ", formatValues);
       if (!formatValues[0].textContent.match(/Fût/)) {
         match = formatValues[0].textContent.match(/(\d+)x/);
       }
